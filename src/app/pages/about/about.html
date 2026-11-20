@@ -1,0 +1,87 @@
+<div class="page">
+  <div class="container">
+    <h2 class="section-title">About <span>Me</span></h2>
+    <div class="section-divider"></div>
+
+    <div class="about-grid">
+      <div class="about-bio">
+        <p>
+          I recently completed my PhD in Bioinformatics at the University of Lausanne (UNIL), in the
+          <a href="https://www.ciriellolab.org" target="_blank" rel="noopener">CSO Lab</a>, on large-scale
+          3D genome organization. My work sits at the intersection of data engineering, epigenomics, and web software development. Understanding various biological disciplines puts me in a unique position to bridge the gap between wet lab and dry lab, and to build tools that are both powerful and user-friendly for biologists, with rigorous software engineering principles.
+        </p>
+        <p>
+          Engineer at heart, I enjoy building both software and hardware. My PhD started in an
+          experimental direction — designing microfluidic chips for intricate live-microscopy experiments
+          with bacteria. The sudden passing of my first supervisor reshaped my path: I joined the
+          Computational Systems Oncology group at my department and shifted to bioinformatics and eventually towards sofware and database engineering.
+          What began as biological data analysis gradually grew into a deeper interest in software
+          architecture and database systems, eventually leading to
+          <a href="https://hicverse.unil.ch" target="_blank" rel="noopener">HiCverse</a> — a
+          full-stack platform for 3D genomics data built on Angular, FastAPI, and a Parquet-based
+          data lake on AWS S3.
+        </p>
+        <p>
+          Before my PhD, I worked as a scientific assistant in the
+          <a href="https://bsse.ethz.ch/ctsb" target="_blank" rel="noopener">Control Theory and Systems Biology group</a>
+          at D-BSSE (Basel), developing optogenetic systems — an interest I first picked up as a side project
+          during my neuroscience work at the
+          <a href="https://www.ru.nl/donders/" target="_blank" rel="noopener">Donders Institute</a>
+          in Nijmegen, where I also developed ImageJ pipelines for cortical interneuron quantification.
+        </p>
+        <p>
+          Outside the terminal: I have a keen interest in 3D printing and Arduino circuits. An avid advocate
+          of open-source tools and digital autonomy — daily Emacs user, interested in self-hosted infrastructure
+          and privacy-respecting software (Syncthing, Nextcloud, Proton ecosystem).
+        </p>
+        <p>Based in Basel, Switzerland, but often found in the Carpathian mountains of south Poland. Open to roles in the Basel / Zurich area.</p>
+      </div>
+
+      <div class="about-sidebar">
+        <div class="about-card">
+          <h3>Experience</h3>
+          <div class="timeline">
+            @for (job of experience; track job.title) {
+              <div class="timeline-item">
+                <div class="timeline-item__dot"></div>
+                <div>
+                  <div class="timeline-item__degree">{{ job.title }}</div>
+                  <div class="timeline-item__institution">{{ job.org }}</div>
+                  <div class="timeline-item__meta">{{ job.period }} · {{ job.location }}</div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+
+        <div class="about-card">
+          <h3>Education</h3>
+          <div class="timeline">
+            @for (edu of education; track edu.degree) {
+              <div class="timeline-item">
+                <div class="timeline-item__dot"></div>
+                <div>
+                  <div class="timeline-item__degree">{{ edu.degree }}</div>
+                  <div class="timeline-item__institution">{{ edu.institution }}</div>
+                  <div class="timeline-item__meta">{{ edu.period }} · {{ edu.location }}</div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+
+        <div class="about-card">
+          <h3>Languages</h3>
+          <div class="lang-grid">
+            @for (lang of languages; track lang.name) {
+              <div class="lang-item">
+                <span class="lang-item__name">{{ lang.name }}</span>
+                <span class="tag">{{ lang.level }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,128 @@
+@use '../../../styles/variables' as *;
+
+.consulting-intro {
+  max-width: 700px;
+  color: $text-secondary;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+
+.consulting-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+
+  @media (max-width: $bp-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.service-card {
+  background: $bg-surface;
+  border: 1px solid $border;
+  border-radius: 10px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    border-color: $teal;
+    box-shadow: 0 0 20px rgba(0, 120, 127, 0.1);
+  }
+
+  &--collab {
+    border-color: rgba(0, 120, 127, 0.3);
+  }
+
+  h3 {
+    color: $text-primary;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    color: $text-secondary;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  &__collab-intro {
+    margin-bottom: 1.25rem;
+  }
+
+  &__collab-cols {
+    display: flex;
+    gap: 1.25rem;
+    flex: 1;
+
+    @media (max-width: $bp-sm) {
+      flex-direction: column;
+    }
+  }
+
+  &__collab-col {
+    flex: 1;
+
+    h4 {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-family: $font-mono;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: $teal-light;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__collab-divider {
+    width: 1px;
+    background: $border;
+    align-self: stretch;
+    flex-shrink: 0;
+  }
+
+  &__collab-link {
+    font-size: 0.75rem;
+    color: $teal-light;
+    font-weight: normal;
+    text-transform: none;
+    letter-spacing: 0;
+    font-family: $font-sans;
+
+    &:hover { color: #fff; }
+  }
+
+  &__list {
+    color: $text-secondary;
+    font-size: 0.875rem;
+    line-height: 1.8;
+    margin: 0 0 0 1rem;
+    padding: 0;
+
+    li { margin-bottom: 0.2rem; }
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: auto;
+    padding-top: 1.25rem;
+  }
+}
+
+.consulting-cta {
+  margin-top: 3.5rem;
+  text-align: center;
+
+  p {
+    color: $text-muted;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+}

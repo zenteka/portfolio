@@ -1,0 +1,16 @@
+<nav class="navbar">
+  <div class="container navbar__inner">
+    <a routerLink="/" class="navbar__logo" (click)="closeMenu()">Karol Piera</a>
+
+    <button class="navbar__burger" (click)="toggleMenu()" [class.open]="menuOpen" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="navbar__links" [class.open]="menuOpen">
+      @for (link of links; track link.route) {
+        <a [routerLink]="link.route" routerLinkActive="active" (click)="closeMenu()">{{ link.label }}</a>
+      }
+      <a href="assets/cv/karol_piera_cv.pdf" target="_blank" class="btn btn-outline" (click)="closeMenu()">Download CV</a>
+    </div>
+  </div>
+</nav>

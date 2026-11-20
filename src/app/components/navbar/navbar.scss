@@ -1,0 +1,87 @@
+@use '../../../styles/variables' as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $nav-height;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid $border;
+  z-index: 100;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &__logo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $text-primary;
+    letter-spacing: 0.02em;
+    &:hover { color: $teal-light; }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    a:not(.btn) {
+      color: $text-secondary;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+      &:hover, &.active { color: $teal-light; }
+    }
+  }
+
+  &__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+
+    span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: $text-primary;
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    &.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    &.open span:nth-child(2) { opacity: 0; }
+    &.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  }
+
+  @media (max-width: $bp-md) {
+    &__burger { display: flex; }
+
+    &__links {
+      display: none;
+      position: absolute;
+      top: $nav-height;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      background: $bg-surface;
+      border-bottom: 1px solid $border;
+      padding: 1rem 1.5rem;
+
+      &.open { display: flex; }
+
+      a { padding: 0.6rem 0; width: 100%; }
+      .btn { margin-top: 0.5rem; }
+    }
+  }
+}

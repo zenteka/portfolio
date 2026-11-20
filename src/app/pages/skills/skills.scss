@@ -1,0 +1,271 @@
+@use '../../../styles/variables' as *;
+
+$c-software: #4f8fe0;
+$c-bioinfo: #5fae7a;
+$c-dataeng: #2fb5c4;
+$c-ds: #a58be0;
+$c-wetlab: #d98b4a;
+
+[data-stack] { --accent: #{$c-software}; }
+[data-stack='bioinfo'] { --accent: #{$c-bioinfo}; }
+[data-stack='dataeng'] { --accent: #{$c-dataeng}; }
+[data-stack='datascience'] { --accent: #{$c-ds}; }
+[data-stack='wetlab'] { --accent: #{$c-wetlab}; }
+
+.view-toggle {
+  display: inline-flex;
+  border: 1px solid $border;
+  border-radius: 999px;
+  padding: 0.25rem;
+  margin-bottom: 1.5rem;
+  background: $bg-surface;
+
+  button {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: $text-secondary;
+    font: inherit;
+    font-size: 0.95rem;
+    padding: 0.45rem 1.3rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+
+    &:hover { color: $text-primary; }
+    &:focus-visible { outline: 2px solid $teal-light; outline-offset: 2px; }
+    &.active { background: $teal; color: #fff; }
+  }
+}
+
+/* ── Tabs ───────────────────────────── */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.tab {
+  appearance: none;
+  font: inherit;
+  color: $text-secondary;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: $bg-surface;
+  border: 1px solid $border;
+  border-bottom: 3px solid transparent;
+  border-radius: 14px;
+  padding: 0.65rem 1.1rem;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+
+  &:hover { color: $text-primary; border-color: var(--accent); }
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  &__icon { font-size: 1.15rem; }
+  &__name { font-weight: 600; font-size: 1rem; }
+
+  &.active {
+    color: $text-primary;
+    border-color: var(--accent);
+    border-bottom-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 12%, $bg-surface);
+  }
+}
+
+.tabpanel {
+  max-width: 960px;
+  border: 1px solid $border;
+  border-left: 5px solid var(--accent);
+  border-radius: 22px;
+  background: $bg-surface;
+  padding: 1.4rem 1.5rem 1.6rem;
+
+  &__tagline {
+    font-family: $font-mono;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 1.1rem;
+  }
+}
+
+/* ── Sub-buttons ─────────────────────── */
+.cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+
+  &--projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.7rem; }
+}
+
+.cat {
+  appearance: none;
+  text-align: left;
+  font: inherit;
+  color: $text-primary;
+  cursor: pointer;
+  background: $bg-primary;
+  border: 1px solid $border;
+  border-radius: 999px;
+  padding: 0.6rem 1.15rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+
+  &:hover { border-color: var(--accent); transform: translateY(-1px); }
+  &:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  &__title { font-weight: 600; font-size: 1.02rem; }
+  &__count {
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    color: $text-secondary;
+    border: 1px solid $border;
+    border-radius: 999px;
+    padding: 0.05rem 0.45rem;
+  }
+  &__when {
+    display: block;
+    font-family: $font-mono;
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $text-secondary;
+  }
+
+  &--project {
+    border-radius: 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+    padding: 0.85rem 1rem;
+    .cat__title { font-size: 1.05rem; line-height: 1.25; }
+  }
+
+  &[aria-expanded='true'] {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 14%, $bg-primary);
+    .cat__when { color: var(--accent); }
+  }
+}
+
+.panel {
+  margin-top: 1rem;
+  padding: 1.1rem 1.2rem 1.3rem;
+  border: 1px solid var(--accent);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--accent) 6%, $bg-primary);
+
+  p { margin: 0 0 1.1rem; font-size: 1.02rem; line-height: 1.65; color: $text-secondary; }
+  .chips { gap: 0.5rem; }
+}
+
+/* ── Columns (bioinformatics) ─────────── */
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+
+}
+
+.column {
+  background: $bg-primary;
+  border: 1px solid $border;
+  border-radius: 18px;
+  padding: 1rem 1.1rem 1.2rem;
+
+  &__label {
+    font-family: $font-mono;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.85rem;
+  }
+}
+
+/* ── Chips ───────────────────────────── */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.chip {
+  background: $bg-primary;
+  border: 1px solid $border;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.98rem;
+  line-height: 1.4;
+
+  small { color: $text-secondary; font-size: 0.85em; margin-left: 0.4em; }
+
+  &.k {
+    border-color: color-mix(in srgb, var(--accent) 45%, $border);
+    background: color-mix(in srgb, var(--accent) 12%, $bg-primary);
+  }
+}
+
+.column .chip { background: $bg-surface; }
+.column .chip.k { background: color-mix(in srgb, var(--accent) 12%, $bg-surface); }
+
+/* ── Keywords view ───────────────────── */
+.kw-section {
+  max-width: 960px;
+  margin-bottom: 2rem;
+
+  &__title {
+    font-size: 1.1rem;
+    color: var(--accent);
+    margin-bottom: 0.9rem;
+  }
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.1rem;
+}
+
+.skill-card {
+  background: $bg-surface;
+  border: 1px solid $border;
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+
+  &__label {
+    font-size: 0.8rem;
+    font-family: $font-mono;
+    color: $teal-light;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+  }
+  .chip { font-size: 0.88rem; padding: 0.35rem 0.8rem; }
+}
+
+.languages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.6rem;
+  max-width: 960px;
+
+  .chip { background: transparent; color: $text-secondary; font-size: 0.95rem; }
+}
+
+@media (max-width: $bp-md) {
+  .columns { grid-template-columns: 1fr; }
+}
+
+@media (max-width: $bp-sm) {
+  .tab { padding: 0.55rem 0.85rem; &__name { font-size: 0.9rem; } }
+  .tabpanel { padding: 1.1rem 1rem 1.3rem; }
+  .cats--projects { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,73 @@
+@use '../../../styles/variables' as *;
+
+.pub-list {
+  list-style: none;
+  counter-reset: pub-counter;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pub-item {
+  background: $bg-surface;
+  border: 1px solid $border;
+  border-radius: 10px;
+  padding: 1.5rem 1.75rem;
+  position: relative;
+
+  &--prep {
+    opacity: 0.8;
+    border-style: dashed;
+  }
+
+  &__authors {
+    font-size: 0.9rem;
+    color: $text-muted;
+    margin-bottom: 0.4rem;
+    font-family: $font-mono;
+  }
+
+  &__title {
+    font-size: 1.05rem;
+    color: $text-primary;
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  &__journal {
+    color: $teal-light;
+    font-style: italic;
+  }
+
+  &__doi {
+    color: $text-muted;
+    font-family: $font-mono;
+    font-size: 0.8rem;
+    &:hover { color: $teal-light; }
+  }
+
+  &__badge {
+    background: rgba(148, 163, 184, 0.1);
+    color: $text-muted;
+    border: 1px solid $border;
+    border-radius: 4px;
+    padding: 0.1rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  &__contribution {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: $text-muted;
+    font-style: italic;
+  }
+}

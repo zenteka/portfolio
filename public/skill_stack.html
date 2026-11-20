@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karol Piera — Skill Stack</title>
+<style>
+  :root{
+    --bg:#0e1113; --bg2:#141a1d; --surface:#181f22; --border:#26312f;
+    --text:#e6ecea; --muted:#8a9a96; --teal:#00a8b3; --teal-light:#A8D5D8;
+    --font:'Segoe UI',system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    --mono:'SFMono-Regular',ui-monospace,Menlo,Consolas,monospace;
+    --l1:#d98b4a; --l2:#c9a13a; --l3:#5fae7a; --l4:#2f9fb0; --l5:#4f8fe0;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:var(--font);}
+  body{
+    min-height:100vh;
+    background:radial-gradient(1200px 600px at 50% -10%, #17211f 0%, var(--bg) 60%);
+    padding:2.2rem 1rem 3rem;
+  }
+  .wrap{max-width:820px;margin:0 auto;}
+  header{text-align:center;margin-bottom:1.6rem;}
+  h1{font-size:1.9rem;margin:0 0 .35rem;letter-spacing:-.01em;}
+  h1 span{color:var(--teal-light);}
+  .tagline{color:var(--muted);font-size:1.02rem;margin:0 0 .6rem;}
+  .hint{
+    display:inline-block;font-family:var(--mono);font-size:.72rem;color:var(--muted);
+    text-transform:uppercase;letter-spacing:.12em;border:1px solid var(--border);
+    border-radius:999px;padding:.28rem .7rem;
+  }
+
+  .stack{display:flex;flex-direction:column-reverse;gap:.55rem;} /* base (layer 1) at bottom */
+
+  .layer{
+    background:var(--surface);border:1px solid var(--border);border-left:5px solid var(--accent);
+    border-radius:26px;overflow:hidden;transition:border-color .2s ease;
+  }
+  .layer:hover{border-color:var(--accent);}
+
+  .layer__bar{
+    display:flex;align-items:center;gap:.85rem;padding:1.05rem 1.25rem;cursor:pointer;
+    list-style:none;user-select:none;
+  }
+  .layer__bar::-webkit-details-marker{display:none;} /* hide default disclosure triangle */
+  .layer__bar::marker{content:"";}
+  .layer__bar:focus-visible{outline:2px solid var(--accent);outline-offset:-3px;border-radius:22px;}
+
+  .layer__icon{
+    flex:0 0 auto;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+    font-size:1.15rem;background:color-mix(in srgb, var(--accent) 18%, transparent);
+    border:1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  .layer__meta{flex:1 1 auto;min-width:0;}
+  .layer__name{display:block;font-size:1.08rem;font-weight:600;line-height:1.2;}
+  .layer__name b{color:var(--accent);font-weight:600;}
+  .layer__desc{display:block;color:var(--muted);font-size:.85rem;margin-top:.42rem;line-height:1.4;}
+  .layer__num{
+    font-family:var(--mono);font-size:.72rem;color:var(--muted);flex:0 0 auto;
+    border:1px solid var(--border);border-radius:999px;padding:.18rem .55rem;
+  }
+  .layer__chev{flex:0 0 auto;color:var(--muted);transition:transform .25s ease;font-size:.9rem;}
+  .layer[open] .layer__chev{transform:rotate(90deg);color:var(--accent);}
+
+  .layer__pad{padding:1.3rem 1.3rem 1.6rem;margin:0 .5rem;border-top:1px solid var(--border);}
+
+  .group{margin-top:1.6rem;}
+  .group:first-child{margin-top:0;}
+  .group__label{
+    font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;
+    color:var(--accent);margin-bottom:.8rem;
+  }
+  .group__label.secondary{color:var(--muted);}
+  .chips{display:flex;flex-wrap:wrap;gap:.6rem;}
+  .chip{
+    background:var(--bg2);border:1px solid var(--border);border-radius:999px;
+    padding:.5rem .95rem;font-size:.85rem;color:var(--text);line-height:1.4;
+  }
+  .chip.k{border-color:color-mix(in srgb, var(--accent) 40%, var(--border));
+    background:color-mix(in srgb, var(--accent) 10%, var(--bg2));}
+  .chip small{color:var(--muted);font-size:.82em;}
+
+  footer{margin-top:1.6rem;display:flex;flex-wrap:wrap;gap:.75rem 1.4rem;
+    justify-content:center;align-items:center;color:var(--muted);font-size:.83rem;}
+  footer .chip{background:transparent;}
+  .sig{text-align:center;margin-top:1.4rem;}
+  .sig a{color:var(--teal-light);text-decoration:none;font-size:.86rem;}
+  .sig a:hover{text-decoration:underline;}
+
+  @media (max-width:520px){
+    h1{font-size:1.55rem;}
+    .layer__desc{display:none;}
+    .layer__bar{padding:.95rem 1rem;gap:.65rem;}
+    .layer__pad{padding:1.1rem 1rem 1.3rem;margin:0 .3rem;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Karol <span>Piera</span> — Skill Stack</h1>
+    <p class="tagline">Want to have it done — do it yourself.</p>
+    <span class="hint">Tap a layer to open it</span>
+  </header>
+
+  <div class="stack">
+
+    <!-- Layer 1 — Biology (base) -->
+    <details class="layer" style="--accent:var(--l1)">
+      <summary class="layer__bar">
+        <span class="layer__icon">🧫</span>
+        <span class="layer__meta">
+          <span class="layer__name"><b>1.</b> Biology</span>
+          <span class="layer__desc">Domain knowledge across disease, development &amp; synthetic biology</span>
+        </span>
+        <span class="layer__num">15</span>
+        <span class="layer__chev">▶</span>
+      </summary>
+      <div class="layer__pad">
+        <div class="group">
+          <div class="group__label">Domain knowledge</div>
+          <div class="chips">
+            <span class="chip k">Neurodevelopmental / developmental disorders <small>Kleefstra · EHMT1 · PV⁺ interneurons</small></span>
+            <span class="chip k">Cancer <small>3D chromatin · ER⁺ dormancy · WGD</small></span>
+            <span class="chip k">Epigenomics &amp; 3D genome <small>chromatin · sub-compartments · Hi-C</small></span>
+            <span class="chip k">Synthetic biology <small>optogenetic gene control · OptoT7</small></span>
+            <span class="chip k">Molecular biology</span>
+            <span class="chip k">Cognitive neuroscience</span>
+          </div>
+        </div>
+        <div class="group">
+          <div class="group__label secondary">Wet lab &amp; microscopy</div>
+          <div class="chips">
+            <span class="chip">Molecular cloning</span>
+            <span class="chip">qPCR</span>
+            <span class="chip">Mammalian / iPSC culture</span>
+            <span class="chip">Immunostaining</span>
+            <span class="chip">Brain-tissue preparation</span>
+            <span class="chip">Epifluorescence microscopy</span>
+            <span class="chip">Live-cell imaging</span>
+            <span class="chip">ImageJ / FIJI</span>
+            <span class="chip">Digital Micromirror Device (DMD)</span>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- Layer 2 — Hardware -->
+    <details class="layer" style="--accent:var(--l2)">
+      <summary class="layer__bar">
+        <span class="layer__icon">🔧</span>
+        <span class="layer__meta">
+          <span class="layer__name"><b>2.</b> Hardware</span>
+          <span class="layer__desc">Instruments &amp; chips built for biology</span>
+        </span>
+        <span class="layer__num">7</span>
+        <span class="layer__chev">▶</span>
+      </summary>
+      <div class="layer__pad">
+        <div class="group">
+          <div class="group__label">Microfluidics</div>
+          <div class="chips">
+            <span class="chip k">K-Layout chip design</span>
+            <span class="chip k">Flow-cell chips <small>bacterial live-imaging</small></span>
+          </div>
+        </div>
+        <div class="group">
+          <div class="group__label secondary">Optogenetic hardware</div>
+          <div class="chips">
+            <span class="chip">LED illumination platforms</span>
+            <span class="chip">Arduino light-delivery rigs</span>
+          </div>
+        </div>
+        <div class="group">
+          <div class="group__label secondary">Electronics &amp; fabrication</div>
+          <div class="chips">
+            <span class="chip">Arduino</span>
+            <span class="chip">LED circuits</span>
+            <span class="chip">3D printing</span>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- Layer 3 — Bioinformatics -->
+    <details class="layer" style="--accent:var(--l3)">
+      <summary class="layer__bar">
+        <span class="layer__icon">🧬</span>
+        <span class="layer__meta">
+          <span class="layer__name"><b>3.</b> Bioinformatics</span>
+          <span class="layer__desc">Genomics assays, tools, formats &amp; analysis</span>
+        </span>
+        <span class="layer__num">20</span>
+        <span class="layer__chev">▶</span>
+      </summary>
+      <div class="layer__pad">
+        <div class="group">
+          <div class="group__label">Assays</div>
+          <div class="chips">
+            <span class="chip k">Hi-C <small>cooler / juicer</small></span>
+            <span class="chip k">ATAC-seq</span>
+            <span class="chip k">snATAC-seq</span>
+            <span class="chip k">RNA-seq</span>
+            <span class="chip k">ChIP-seq</span>
+          </div>
+        </div>
+        <div class="group">
+          <div class="group__label secondary">Tools</div>
+          <div class="chips">
+            <span class="chip">CALDER2</span>
+            <span class="chip">SnapATAC2</span>
+            <span class="chip">MACS3</span>
+            <span class="chip">bedtools</span>
+            <span class="chip">SLURM</span>
+          </div>
+        </div>
+        <div class="group">
+          <div class="group__label secondary">Formats</div>
+          <div class="chips">
+            <span class="chip">BED / bedGraph</span>
+            <span class="chip">VCF</span>
+            <span class="chip">bigWig</span>
+            <span class="chip">HDF5 <small>.h5 / .mcool</small></span>
+          </div>
+        </div>
+        <div class="group">
+          <div class="group__label secondary">Analysis &amp; ML</div>
+          <div class="chips">
+            <span class="chip">scikit-learn</span>
+            <span class="chip">scipy</span>
+            <span class="chip">GLMs</span>
+            <span class="chip">GAMs</span>
+            <span class="chip">PCA</span>
+            <span class="chip">Clustering</span>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- Layer 4 — Data & Systems Engineering -->
+    <details class="layer" style="--accent:var(--l4)">
+      <summary class="layer__bar">
+        <span class="layer__icon">🗄️</span>
+        <span class="layer__meta">
+          <span class="layer__name"><b>4.</b> Data &amp; Systems Engineering</span>
+          <span class="layer__desc">Pipelines, storage, observability &amp; Linux ops</span>
+        </span>
+        <span class="layer__num">22</span>
+        <span class="layer__chev">▶</span>
+      </summary>
+      <div class="layer__pad">
+        <div class="group">
+          <div class="group__label">Data engineering</div>
+          <div class="chips">
+            <span class="chip k">Apache Parquet</span>
+            <span class="chip k">HDF5</span>
+            <span class="chip k">DuckDB</span>
+            <span class="chip k">AWS S3</span>
+            <span class="chip k">Nextflow</span>
+            <span class="chip k">FastAPI</span>
+            <span class="chip k">Celery</span>
+            <span class="chip k">Redis</span>
+          </div>
+        </div>
+        <div class="group">
+          <div class="group__label secondary">DevOps &amp; observability</div>
+          <div class="chips">
+            <span class="chip">GitHub Actions (CI/CD)</span>
+            <span class="chip">Docker</span>
+            <span class="chip">Prometheus</span>
+            <span class="chip">Grafana</span>
+            <span class="chip">cAdvisor</span>
+            <span class="chip">Custom exporters &amp; alerting</span>
+            <span class="chip">Traefik</span>
+          </div>
+        </div>
+        <div class="group">
+          <div class="group__label secondary">Linux &amp; sysadmin</div>
+          <div class="chips">
+            <span class="chip">Ubuntu / AlmaLinux / RHEL / Arch</span>
+            <span class="chip">SSH &amp; SSHFS</span>
+            <span class="chip">tmux</span>
+            <span class="chip">rsync</span>
+            <span class="chip">Cron scheduling</span>
+            <span class="chip">User &amp; group administration</span>
+            <span class="chip">find / grep / sed / awk</span>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- Layer 5 — Software (top) -->
+    <details class="layer" style="--accent:var(--l5)">
+      <summary class="layer__bar">
+        <span class="layer__icon">💻</span>
+        <span class="layer__meta">
+          <span class="layer__name"><b>5.</b> Software</span>
+          <span class="layer__desc">Languages, Python stack, web &amp; dev environment</span>
+        </span>
+        <span class="layer__num">22</span>
+        <span class="layer__chev">▶</span>
+      </summary>
+      <div class="layer__pad">
+        <div class="group">
+          <div class="group__label">Languages</div>
+          <div class="chips">
+            <span class="chip k">Python</span>
+            <span class="chip k">R</span>
+            <span class="chip k">SQL</span>
+            <span class="chip k">TypeScript</span>
+            <span class="chip k">Bash</span>
+            <span class="chip k">Lisp</span>
+          </div>
+        </div>
+        <div class="group">
+          <div class="group__label secondary">Python stack</div>
+          <div class="chips">
+            <span class="chip">pandas</span>
+            <span class="chip">numpy</span>
+            <span class="chip">polars</span>
+            <span class="chip">PyArrow</span>
+            <span class="chip">Jupyter</span>
+          </div>
+        </div>
+        <div class="group">
+          <div class="group__label secondary">Web &amp; visualization</div>
+          <div class="chips">
+            <span class="chip">Angular</span>
+            <span class="chip">D3.js</span>
+            <span class="chip">HTML</span>
+            <span class="chip">CSS / SCSS</span>
+            <span class="chip">reveal.js</span>
+            <span class="chip">HiGlass</span>
+            <span class="chip">Django <small>ops / config</small></span>
+          </div>
+        </div>
+        <div class="group">
+          <div class="group__label secondary">Dev environment</div>
+          <div class="chips">
+            <span class="chip">Emacs</span>
+            <span class="chip">Git / Magit</span>
+            <span class="chip">VS Code</span>
+            <span class="chip">Claude Code</span>
+          </div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <footer>
+    <span class="chip">Polish <small>native</small></span>
+    <span class="chip">English <small>C2</small></span>
+    <span class="chip">German <small>B2</small></span>
+    <span class="chip">French <small>A1</small></span>
+    <span class="chip">Italian <small>A1</small></span>
+  </footer>
+
+  <div class="sig">
+    <a href="https://karolpiera.com" target="_blank" rel="noopener">karolpiera.com</a>
+    &nbsp;·&nbsp;
+    <a href="https://hicverse.unil.ch" target="_blank" rel="noopener">HiCverse</a>
+  </div>
+</div>
+</body>
+</html>

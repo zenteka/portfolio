@@ -1,0 +1,30 @@
+<div class="page">
+  <div class="container">
+    <h2 class="section-title">Pub<span>lications</span></h2>
+    <div class="section-divider"></div>
+
+    <ol class="pub-list">
+      @for (pub of publications; track pub.title) {
+        <li class="pub-item" [class.pub-item--prep]="pub.status === 'in-preparation'">
+          <div class="pub-item__authors">{{ pub.authors }}</div>
+          <div class="pub-item__title">{{ pub.title }}</div>
+          <div class="pub-item__meta">
+            <span class="pub-item__journal">{{ pub.journal }}</span>
+            @if (pub.year) { <span>{{ pub.year }}</span> }
+            @if (pub.doi) {
+              <a [href]="'https://doi.org/' + pub.doi" target="_blank" rel="noopener" class="pub-item__doi">
+                doi:{{ pub.doi }}
+              </a>
+            }
+            @if (pub.status === 'in-preparation') {
+              <span class="pub-item__badge">In preparation</span>
+            }
+          </div>
+          @if (pub.contribution) {
+            <div class="pub-item__contribution">Contribution: {{ pub.contribution }}</div>
+          }
+        </li>
+      }
+    </ol>
+  </div>
+</div>

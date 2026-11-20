@@ -1,0 +1,145 @@
+<div class="page">
+  <div class="container">
+    <h2 class="section-title">Skill <span>Stack</span></h2>
+    <div class="section-divider"></div>
+
+    <div class="view-toggle" role="group" aria-label="Skills view">
+      <button type="button" [class.active]="view === 'stack'" [attr.aria-pressed]="view === 'stack'" (click)="view = 'stack'">Stack</button>
+      <button type="button" [class.active]="view === 'keywords'" [attr.aria-pressed]="view === 'keywords'" (click)="view = 'keywords'">Keywords</button>
+    </div>
+
+    @if (view === 'stack') {
+      <div class="tabs" role="tablist">
+        @for (t of tabs; track t.id) {
+          <button
+            type="button"
+            role="tab"
+            class="tab"
+            [attr.data-stack]="t.id"
+            [class.active]="activeTab === t.id"
+            [attr.aria-selected]="activeTab === t.id"
+            (click)="selectTab(t.id)"
+          >
+            <span class="tab__icon">{{ t.icon }}</span>
+            <span class="tab__name">{{ t.name }}</span>
+          </button>
+        }
+      </div>
+
+      <section class="tabpanel" [attr.data-stack]="current.id">
+        <p class="tabpanel__tagline">{{ current.tagline }}</p>
+
+        @if (current.layout === 'subs') {
+          <div class="cats">
+            @for (s of current.subs; track s.label; let i = $index) {
+              <button
+                type="button"
+                class="cat"
+                [attr.aria-expanded]="openSub[current.id] === i"
+                (click)="toggleSub(current.id, i)"
+              >
+                <span class="cat__title">{{ s.label }}</span>
+                <span class="cat__count">{{ s.chips.length }}</span>
+              </button>
+            }
+          </div>
+          @for (s of current.subs; track s.label; let i = $index) {
+            @if (openSub[current.id] === i) {
+              <div class="panel">
+                @if (s.intro) { <p>{{ s.intro }}</p> }
+                <div class="chips">
+                  @for (c of chips(s.chips); track c.name) {
+                    <span class="chip" [class.k]="c.key">{{ c.name }}@if (c.note) { <small>{{ c.note }}</small> }</span>
+                  }
+                </div>
+              </div>
+            }
+          }
+        }
+
+        @if (current.layout === 'columns') {
+          <div class="columns">
+            @for (s of current.subs; track s.label) {
+              <div class="column">
+                <h3 class="column__label">{{ s.label }}</h3>
+                <div class="chips chips--col">
+                  @for (c of chips(s.chips); track c.name) {
+                    <span class="chip" [class.k]="c.key">{{ c.name }}@if (c.note) { <small>{{ c.note }}</small> }</span>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        }
+
+        @if (current.layout === 'projects') {
+          <div class="cats cats--projects">
+            @for (p of current.projects; track p.title; let i = $index) {
+              <button
+                type="button"
+                class="cat cat--project"
+                [attr.aria-expanded]="openProject === i"
+                (click)="toggleProject(i)"
+              >
+                <span class="cat__when">{{ p.when }}</span>
+                <span class="cat__title">{{ p.title }}</span>
+              </button>
+            }
+          </div>
+          @for (p of current.projects; track p.title; let i = $index) {
+            @if (openProject === i) {
+              <div class="panel">
+                <p>{{ p.text }}</p>
+                <div class="chips">
+                  @for (c of chips(p.chips); track c.name) {
+                    <span class="chip" [class.k]="c.key">{{ c.name }}@if (c.note) { <small>{{ c.note }}</small> }</span>
+                  }
+                </div>
+              </div>
+            }
+          }
+        }
+      </section>
+    }
+
+    @if (view === 'keywords') {
+      @for (t of tabs; track t.id) {
+        <section class="kw-section" [attr.data-stack]="t.id">
+          <h3 class="kw-section__title">{{ t.icon }} {{ t.name }}</h3>
+          <div class="skills-grid">
+            @if (t.subs) {
+              @for (s of t.subs; track s.label) {
+                <div class="skill-card">
+                  <h4 class="skill-card__label">{{ s.label }}</h4>
+                  <div class="chips">
+                    @for (c of chips(s.chips); track c.name) {
+                      <span class="chip" [class.k]="c.key">{{ c.name }}@if (c.note) { <small>{{ c.note }}</small> }</span>
+                    }
+                  </div>
+                </div>
+              }
+            }
+            @if (t.projects) {
+              @for (p of t.projects; track p.title) {
+                <div class="skill-card">
+                  <h4 class="skill-card__label">{{ p.title }}</h4>
+                  <div class="chips">
+                    @for (c of chips(p.chips); track c.name) {
+                      <span class="chip" [class.k]="c.key">{{ c.name }}@if (c.note) { <small>{{ c.note }}</small> }</span>
+                    }
+                  </div>
+                </div>
+              }
+            }
+          </div>
+        </section>
+      }
+    }
+
+    <div class="languages">
+      @for (c of languages; track c.name) {
+        <span class="chip">{{ c.name }} <small>{{ c.note }}</small></span>
+      }
+    </div>
+  </div>
+</div>
